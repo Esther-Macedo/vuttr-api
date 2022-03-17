@@ -1,4 +1,4 @@
-import { dbCredentials } from 'db.credentials';
+import { dbCredentials } from './db.credentials';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
 const config: MysqlConnectionOptions = {

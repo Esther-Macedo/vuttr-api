@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { authUserInterface } from 'src/auth/interfaces/auth-user.inerface';
 import { Users } from 'src/entity/users.entity';
 import { Repository } from 'typeorm';
+import * as bycript from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -17,8 +18,9 @@ export class UserService {
   }
 
   async addUser({ name, username, password }: authUserInterface) {
+    const hash = await bycript.hash(password, 10);
     try {
-      const toadd = this.userRepo.create({ name, username, password });
+      const toadd = this.userRepo.create({ name, username, password: hash });
       await this.userRepo.save(toadd);
     } catch (e) {
       throw new Error('Ops');

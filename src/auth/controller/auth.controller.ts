@@ -4,6 +4,8 @@ import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { authDto } from '../dto/auth.dto';
 import { UserService } from 'src/services/users.service';
 import { AuthService } from '../services/auth.service';
+import * as bycript from 'bcrypt';
+
 @Controller()
 export class AuthController {
   constructor(
@@ -18,8 +20,8 @@ export class AuthController {
   }
 
   @Post('singup')
-  signup(@Body() user: authDto, @Res() res: Response) {
-    this.usersService.addUser(user);
+  async signup(@Body() user: authDto, @Res() res: Response) {
+    await this.usersService.addUser(user);
     res.send('Usuario criado');
   }
 }
