@@ -3,7 +3,7 @@
 /node_modules
 .env
 db.credentials.ts
-.gitignore
+gitignore
 
 # Logs
 logs
