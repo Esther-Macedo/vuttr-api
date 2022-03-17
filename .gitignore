@@ -3,7 +3,7 @@
 /node_modules
 .env
 docker-compose.yml
-db.constants.ts
+db.credentials.ts
 
 # Logs
 logs
